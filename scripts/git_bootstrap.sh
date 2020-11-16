@@ -7,19 +7,20 @@
 #usage          :bash ./git_bootstrap.sh
 #environment    :bash 5.0.17
 #===============================================================================
+
 function get_repo_name {
     # this is the name that will be used on GH, or elsewhere
-    read -p "[+] Use '$dir_name' as public-facing repo name? (y/n) " answer
+    read -p "[+] Use '$1' as public-facing repo name? (y/n) " answer
 
     case $answer in
         y )
-            repo_name=$dir_name
+            repo_name=$1
             ;;
         n )
             read -p "[+] Enter your new repository name: " repo_name
             # default back to curr if invalid opt given
             if [ "$repo_name" = "" ]; then
-                repo_name=$dir_name
+                repo_name=$1
             fi
             ;;
         *)
@@ -31,11 +32,11 @@ function get_repo_name {
 function create_readme {
     echo "[+] Creating README..."
     touch README.md
-    echo "# $repo_name" > README.md
+    echo "# $1" > README.md
 }
 
 function init_git {
-    echo "[+] Initializing a new Git repository in $repo_name..."
+    echo "[+] Initializing a new Git repository in $1..."
     git init
 }
 
@@ -56,9 +57,9 @@ function create_gitignore {
 
 dir_name=`basename $(pwd)`
 
-get_repo_name
-create_readme
-create_gitignore
-init_git
+get_repo_name $dir_name
+create_readme $repo_name
+create_gitignore 
+init_git $repo_name
 
 echo "[+] Done"

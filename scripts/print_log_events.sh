@@ -7,6 +7,7 @@
 #usage          :bash ./print_log_events.sh
 #environment    :bash 5.0.17
 #===============================================================================
+
 this_script="$(basename "$0")"
 
 function usage {
