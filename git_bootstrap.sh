@@ -1,4 +1,12 @@
-#!/bin/bash
+#!/bin/bash     
+#title          :git_bootstrap.sh
+#desc           :bootstrap a new git repository
+#author         :Matthew Zito (goldmund)
+#created        :11/2020
+#version        :1.0.0  
+#usage          :bash ./git_bootstrap.sh
+#environment    :bash 5.0.17
+#===============================================================================
 function get_repo_name {
     # this is the name that will be used on GH, or elsewhere
     read -p "[+] Use '$dir_name' as public-facing repo name? (y/n) " answer
