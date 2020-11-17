@@ -11,7 +11,30 @@
 now=$(date +%m/%Y)
 divider=$(printf '=%.0s' {1..79})
 max_chars=55
-title="$(basename "$0")"
+
+function get_script_name {
+    read -p "[+] Enter the full script name (with extension): " title
+    # supplant whitespace
+    title=${title// /_}
+    # strconv lower
+    title=${title,,}
+
+    # check if script exists
+    if [ ! -e $title ]; then
+        read -p "[*] ${title} does not exist. Create it? (y/n) :" answer
+
+        case $answer in 
+            y ) 
+                touch $title
+                echo "[+] Created $title"
+                ;;
+            n )
+                echo "[*] Exiting..."
+                exit 0
+                ;;
+        esac
+    fi
+}
 
 function get_desc_and_validate {
     ok=0
@@ -62,6 +85,9 @@ function get_env_and_validate {
     fi
 }
 
+# get title
+get_script_name
+
 # get env
 get_env_and_validate
 
@@ -75,18 +101,38 @@ author="Matthew Zito (goldmund)"
 read -p "[+] Enter script version (or enter to default to 1.0.0): " version
 [[ $version == "" ]] && version="1.0.0"
 
-# append header to beginning of file
-printf "%-16s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%s\n\n\n" "${shebang}" '#title' ":$title" '#desc' \
-":$desc" '#author' ":$author" '#created' ":$now" '#version' \
-":$version" '#usage' ":./$title" '#environment' \
-":${env} ${env_version}" \#$divider
+# # append header to beginning of file
 
-# echo 'header' | cat - file.txt > temp && mv temp file.txt
+echo "[+] Formatting script with headers..."
+
+headerpfx=(
+'#environment'
+'#usage'
+'#version'
+'#created'
+'#author'
+'#desc'
+'#title'
+)
+
+headerval=(
+":${env} ${env_version}"
+":./$title"
+":$version" 
+":$now"
+":$author"
+":$desc"
+":$title"
+)
+
+# write divider
+sed -i "1s/^/$(printf '%s\n\n\n' "\#${divider}")\n/" $title
+
+# write fields
+for ((i=0; i < ${#headerpfx[@]}; i++)); do
+  # use var expansion in headervals to escape possible backslashes
+  sed -i "1s/^/$(printf '%-16s%-8s\n' "${headerpfx[i]}" "${headerval[i]//\//\\/}")\n/" $title
+done;
+
+# write shebang
+sed -i "1s/^/$(printf '%-16s\n' "${shebang//\//\\/}")\n/" $title
