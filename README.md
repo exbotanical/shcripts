@@ -7,6 +7,7 @@ License: MIT
 
 - [Productivity](#prod)
 - [Logging](#log)
+- [Configuration][#conf]
 
 ### <a name="prod"></a> Productivity
 
@@ -17,3 +18,8 @@ License: MIT
 ### <a name="log"></a> Logging
 
 * `print_log_events` - print from a given log file only those events executed by the current user
+
+### <a name="log"></a> Configuration
+
+* `flush_iptables` - flush all firewall rules, tables, chains, and mangles
+* `enable_port_fwd` - enables port forwarding
