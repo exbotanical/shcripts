@@ -16,9 +16,9 @@ License: MIT
 * `sh_bootstrap` - bootstrap a new bash script with a formatted header, add execute permissions, launch in text editor
 * `headerize` - add formatted headers to a script of a variety of interpreters and environments...super flexible tool!! 
 
-### <a name="prod"></a> Git Hooks
+### <a name="hooks"></a> Git Hooks
 
-* `no-env` - catch .env files in the staging area and prevent them from being included in your git commits. installer script
+* `no-env` - catch .env files in the staging area and prevent them from being included in your git commits. includes installer script
 
 ### <a name="log"></a> Logging
 
