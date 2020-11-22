@@ -1,10 +1,10 @@
 #!/bin/bash     
-#title          :install_no-env.sh
+#title          :no-env pre-commit hook installer
 #desc           :install no-env pre-commit hook
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0  
-#usage          :bash ./install_no-env.sh
+#usage          :bash ./installer.sh
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 
