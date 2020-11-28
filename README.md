@@ -10,6 +10,8 @@ License: MIT
     - [Git Hooks](#hooks)
     - [Logging](#log)
     - [Configuration](#conf)
+    - [Utility](#util)
+    - [Misc](#misc)
 - [Installation & Usage](#use)
 
 ### <a name="enum"></a> Inventory
@@ -32,6 +34,14 @@ License: MIT
 
 * `flush_iptables` - flush all firewall rules, tables, chains, and mangles
 * `enable_port_fwd` - enables port forwarding
+
+##### <a name="util"></a> Utility Scripts
+
+* `intconv` - convert a binary or hexadecimal value to decimal
+
+##### <a name="misc"></a> Miscellaneous
+
+* `logging_server` - listens for and logs HTTP requests
 
 ### <a name="use"></a> Installation & Usage
 

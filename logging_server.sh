@@ -1,10 +1,10 @@
 #!/bin/bash     
-#title          :rest_server.sh
-#desc           :a simple restful server
+#title          :logging_server.sh
+#desc           :a logging server
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0
-#usage          :bash ./rest_server.sh
+#usage          :bash ./logging_server.sh
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 touch log.txt
