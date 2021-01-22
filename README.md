@@ -21,6 +21,7 @@ License: MIT
 * `git_bootstrap` - bootstrap a new git repository with .gitignore and README files
 * `sh_bootstrap` - bootstrap a new bash script with a formatted header, add execute permissions, launch in text editor
 * `headerize` - add formatted headers to a script of a variety of interpreters and environments...super flexible tool!! 
+* `docker_clean` - stop all running processes for given Docker images; remove them, purge all resulting dangling images and volumes
 
 ##### <a name="hooks"></a> Git Hooks
 
