@@ -53,13 +53,13 @@ read -p "[+] Enter script version (or enter to default to 1.0.0): " version
 
 # create file, write header to said file
 printf "%-16s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
-%-16s%-8s\n\
+%-16s%-s\n\
+%-16s%-s\n\
+%-16s%-s\n\
+%-16s%-s\n\
+%-16s%-s\n\
+%-16s%-s\n\
+%-16s%-s\n\
 %s\n\n\n" '#!/bin/bash' '#title' ":$title" '#desc' \
 ":$desc" '#author' ":$author" '#created' ":$now" '#version' \
 ":$version" '#usage' ":bash ./$title" '#environment' \
