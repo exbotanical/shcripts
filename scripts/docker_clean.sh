@@ -52,7 +52,7 @@ function purge_images {
 }
 
 function init {
-  read -p "[*] Warning: this script will remove all HSUI containers and dangling volumes. Continue? (y/n) " answer
+  read -p "[*] Warning: this script will remove all target containers and dangling volumes. Continue? (y/n) " answer
   case $answer in
     y )   
       stop_daemon_proc
