@@ -8,27 +8,8 @@
 #environment    :bash 5.0.17
 #===============================================================================
 
-<<<<<<< HEAD
-now=$(date +%m/%Y)
-divider=$(printf '=%.0s' {1..79})
-max_chars=55
-
-function select_title {
-    read -p "[+] Enter a name for the new script: " title
-    # supplant whitespace
-    title=${title// /_}
-    # strconv lower
-    title=${title,,}
-    # add ext if not extant
-    [ "${title: -3}" != '.sh' ] && title=${title}.sh
-    # check if script exists
-    if [ -e "$title" ]; then
-        echo "[-] $title already exists. Input a different name"
-        select_title
-    fi
-=======
-Nl=$'\n'    # Nl is newline
-IFS=$Nl     # don't worry about quoting variable expansions except for multiline values
+Nl=$'\n'
+IFS=$Nl
 
 main () {
   local description filename rest=()
@@ -76,7 +57,6 @@ get_author () {
 
 get_created () {
   date +$Date_format
->>>>>>> 737149b4a0feb320220bd0197350042a21b93fb2
 }
 
 get_description () {
@@ -97,36 +77,6 @@ get_filename () {
   normalize $filename
 }
 
-<<<<<<< HEAD
-select_title
-# get description, limit to $max_chars
-get_desc_and_validate
-# read -p "[+] Enter author name: " author
-author="Matthew Zito (goldmund)"
-read -p "[+] Enter script version (or enter to default to 1.0.0): " version
-
-[[ "$version" == "" ]] && version="1.0.0"
-
-# create file, write header to said file
-printf "%-16s\n\
-%-16s%-s\n\
-%-16s%-s\n\
-%-16s%-s\n\
-%-16s%-s\n\
-%-16s%-s\n\
-%-16s%-s\n\
-%-16s%-s\n\
-%s\n\n\n" '#!/bin/bash' '#title' ":$title" '#desc' \
-":$desc" '#author' ":$author" '#created' ":$now" '#version' \
-":$version" '#usage' ":bash ./$title" '#environment' \
-":bash $BASH_VERSION" \#$divider > "$title"
-
-# render file exec
-chmod +x "$title"
-# open w/cursor below header
-/usr/bin/clear 
-vim +10 "$title"
-=======
 get_usage () {
   echo ./$1
 }
@@ -177,4 +127,3 @@ set -o errexit
 set -o nounset
 
 main $*
->>>>>>> 737149b4a0feb320220bd0197350042a21b93fb2
