@@ -21,7 +21,7 @@ function select_title {
     # add ext if not extant
     [ "${title: -3}" != '.sh' ] && title=${title}.sh
     # check if script exists
-    if [ -e $title ]; then
+    if [ -e "$title" ]; then
         echo "[-] $title already exists. Input a different name"
         select_title
     fi
@@ -49,7 +49,7 @@ get_desc_and_validate
 author="Matthew Zito (goldmund)"
 read -p "[+] Enter script version (or enter to default to 1.0.0): " version
 
-[[ $version == "" ]] && version="1.0.0"
+[[ "$version" == "" ]] && version="1.0.0"
 
 # create file, write header to said file
 printf "%-16s\n\
@@ -63,10 +63,10 @@ printf "%-16s\n\
 %s\n\n\n" '#!/bin/bash' '#title' ":$title" '#desc' \
 ":$desc" '#author' ":$author" '#created' ":$now" '#version' \
 ":$version" '#usage' ":bash ./$title" '#environment' \
-":bash $BASH_VERSION" \#$divider > $title
+":bash $BASH_VERSION" \#$divider > "$title"
 
 # render file exec
-chmod +x $title
+chmod +x "$title"
 # open w/cursor below header
 /usr/bin/clear 
-vim +10 $title
+vim +10 "$title"

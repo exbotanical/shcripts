@@ -20,7 +20,7 @@ function get_script_name {
     title=${title,,}
 
     # check if script exists
-    if [ ! -e $title ]; then
+    if [ ! -e "$title" ]; then
         read -p "[*] ${title} does not exist. Create it? (y/n) :" answer
 
         case $answer in 
@@ -79,7 +79,7 @@ function get_env_and_validate {
     esac
 
     # no version no. found; use placeholder
-    if [[ $env_version == "-1" || $env_version == "" ]]; then
+    if [[ "$env_version" == "-1" || "$env_version" == "" ]]; then
         echo "[-] ${env} version not found, writing placeholder..."
         env_version="0.0.0-development"
     fi
