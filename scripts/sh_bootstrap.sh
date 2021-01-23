@@ -1,9 +1,9 @@
-#!/bin/bash     
+#!/bin/bash
 #title          :sh_bootstrap.sh
 #desc           :bootstrap a new bash script
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0  
+#version        :1.0.0
 #usage          :bash ./sh_bootstrap.sh
 #environment    :bash 5.0.17
 #===============================================================================
@@ -68,5 +68,5 @@ printf "%-16s\n\
 # render file exec
 chmod +x $title
 # open w/cursor below header
-/usr/bin/clear 
+/usr/bin/clear
 vim +10 $title
