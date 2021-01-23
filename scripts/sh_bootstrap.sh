@@ -42,6 +42,8 @@ function get_desc_and_validate {
     done
 }
 
+return 2>/dev/null
+
 select_title
 # get description, limit to $max_chars
 get_desc_and_validate
