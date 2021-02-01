@@ -8,34 +8,44 @@
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 
-# Configurable Opts
-max_chars=9
-max_out_char=20
+Nl=$'\n'
+IFS=$Nl
 
+main () {
+  local max_chars_calc=$(($Max_out_chars - 1)) uniq_key calc res out 
 
-max_calc=$((max_out_char - 1))
+  uniq_key=$(get_uniq_key)
+  while (( ${#uniq_key} > Max_chars | ${#uniq_key} == 0 )); do
+    echo "[-] The uniq_key must be between 1 and $Max_chars characters"
+    uniq_key=$(get_uniq_key)
+  done
 
-function get_key_and_validate {
-    ok=0
+  calc="$(echo $(echo '$uniq_key' | openssl base64) | openssl md5)"
+  res=(
+    $uniq_key 
+    ${calc//(stdin)= /}
+  )
+  
+  out=${res[0]}${res[1]}
 
-    while [[ $ok == 0 ]]; do
-        read -p "[+] Enter unique key: " uniq_key
+  echo -e "[*] Hash generated:\n"
 
-        if [ ${#uniq_key} -gt $max_chars ]; then
-            echo "[-] The unique key cannot exceed ${max_chars} characters"
-            get_key_and_validate
-        else
-            ok=1
-        fi
-    done
+  echo -e "${out:0:$max_chars_calc}\n"
 }
 
-get_key_and_validate
+get_uniq_key () {
+  local uniq_key
 
-in="$uniq_key$(echo $(echo '$uniq_key' | openssl base64) | openssl md5)"
-out=(${in//(stdin)= / })
-res=${out[0]}${out[1]}
+  read -p "[+] Enter unique key: " uniq_key
+  echo $uniq_key
+}
 
-echo -e "[*] Hash generated:\n"
+Max_chars=9 
+Max_out_chars=20
 
-echo -e "${res:0:$max_out_char}\n"
+return 2>/dev/null
+
+set -o errexit
+set -o nounset
+
+main $*
