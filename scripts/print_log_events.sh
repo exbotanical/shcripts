@@ -7,53 +7,62 @@
 #usage          :bash ./print_log_events.sh
 #environment    :bash 5.0.17
 #===============================================================================
+LOG_DIR="/var/log"
+MAX=100
+Locale="$(basename "$0")"
 
-this_script="$(basename "$0")"
-
-function usage {
-    cat <<EOF
+usage () {
+  cat <<EOF
 Print only the events matching user $USER in a given log file
 
-Usage: ${this_script} OPTION
+Usage: ${Locale} OPTION
 
 Options: 
-    -h display this usage dialog
-    -f specify the filename of the log to process
+  -h display this usage dialog
+  -f specify the filename of the log to process
 
 Examples: 
-    ${this_script} -f auth.log
-    cat auth.log | ${this_script}
+  ${Locale} -f auth.log
+  cat auth.log | ${Locale}
 EOF
-    exit 0
+  exit 0
 }
 
-function get_input {
-    cat /dev/stdin
+get_input () {
+  echo $(cat /dev/stdin)
 }
 
-function proc_input {
-    echo "[+] Printing all events"
-    get_input | grep -rh $USER | cut -f1,3 -d":"
+proc_input () {
+  echo "[+] Printing all events"
+  get_input | grep -rh $USER | tail -$MAX
 }
 
-if read -t 0; then
+main () {
+  cd "$LOG_DIR"
+  
+  if read -t 0; then
     get_input | proc_input
     exit 0
-elif [[ ${@} ]]; then
+  elif [[ ${@} ]]; then
 
     while getopts ":hf:" opt; do
-        case ${opt} in
-            h ) usage ;;
-            f )
-                cat $OPTARG | proc_input
-                exit 0
-                ;;
-            \? )
-                echo -e "Invalid option: -$OPTARG\nTry ${this_script} -h for usage" 1>&2
-                exit 1
-                ;;
-        esac
+      case "$opt" in
+        h ) 
+          usage 
+          ;;
+        f )
+          cat "$OPTARG" | proc_input
+          exit 0
+          ;;
+        \? )
+          echo -e "Invalid option: -$OPTARG\nTry $Locale -h for usage" 1>&2
+          exit 1
+          ;;
+      esac
     done
-else
+  else
     usage
-fi
+  fi
+}
+
+main $*

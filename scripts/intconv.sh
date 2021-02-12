@@ -8,36 +8,39 @@
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 
-this_script="$(basename "$0")"
+Locale="$(basename "$0")"
 
-function usage {
-    cat <<EOF
+usage () {
+  cat <<EOF
 Convert binary or hexadecimal values to decimal
 
-Usage: ${this_script} OPTION [ARG]
+Usage: ${Locale} OPTION [ARG]
 
 Options: 
-    -b convert a binary value
-    -h convert a hexadecimal value
+  -b convert a binary value
+  -h convert a hexadecimal value
 
 Examples: 
-    ${this_script} -b 00011010
-    ${this_script} -h A0B1FF
+  ${Locale} -b 00011010
+  ${Locale} -h A0B1FF
 EOF
-    exit 0
+  exit 0
 }
 
-while getopts ":b:h:" opt; do
-    case ${opt} in
-        b ) 
-            echo "$((2#$OPTARG))" 2>/dev/null
-            ;;
-        h )
-            echo "$((16#$OPTARG))" 2>/dev/null
-            ;;
-        \? )
-            usage
-            ;;
+main () {
+  while getopts ":b:h:" opt; do
+    case "$opt" in
+    b ) 
+      echo "$((2#$OPTARG))" 2>/dev/null
+      ;;
+    h )
+      echo "$((16#$OPTARG))" 2>/dev/null
+      ;;
+    \? )
+      usage
+      ;;
     esac
-done
+  done
+}
 
+main $*
