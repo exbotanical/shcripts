@@ -43,8 +43,8 @@ Options:
   rm (\$1 Remove an entry, \$2, for IP ( \$3 OR $DEFAULT_IP)
 
 Examples: 
-  $0 add 127.0.0.1 local-dev.site
-  $0 rm 127.0.0.1 local-dev.site
+  $0 add local-dev.site 127.0.0.1 
+  $0 rm local-dev.site 127.0.0.1 
 
 EOF
   exit 1
