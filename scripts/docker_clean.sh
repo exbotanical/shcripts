@@ -1,5 +1,5 @@
 #!/bin/bash     
-#title          :docker_clean.sh
+#title          :docker_clean
 #desc           :purge all dangling docker artifacts
 #author         :Matthew Zito (goldmund)
 #created        :01/2021
@@ -12,7 +12,7 @@ TARGET_IMAGES=(
 # target image names here
 )
 
-function prune_docker_imgs {
+prune_docker_imgs() {
   echo -e '[*] Checking for dangling images...\n'
 
   if [[ $(echo $(docker images -f dangling=true -q) | wc -m) -gt 1 ]]; then
@@ -23,7 +23,7 @@ function prune_docker_imgs {
   fi
 }
 
-function prune_docker_vols {
+prune_docker_vols() {
   echo -e '[*] Checking for dangling volumes...\n'
 
   if [[ $(echo $(docker volume ls) | wc -m) -gt 19 ]]; then
@@ -34,7 +34,7 @@ function prune_docker_vols {
   fi
 }
 
-function stop_daemon_proc {
+stop_daemon_proc() {
   echo -e '[*] Checking for active daemon processes...\n'
 
   [[ $(echo $(docker ps -aq) | wc -m) -gt 1 ]] && {
@@ -44,14 +44,14 @@ function stop_daemon_proc {
   echo -e '[*] No active daemon processes; skipping...\n'
 }
 
-function purge_images {
+purge_images() {
   for ((i=0; i < ${#TARGET_IMAGES[@]}; i++)); do
     echo -e "[*] Purging all ${TARGET_IMAGES[i]} images...\n"
     docker images | grep ${TARGET_IMAGES[i]} | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi ${TARGET_IMAGES[i]}:{}
   done;
 }
 
-function init {
+init() {
   read -p "[*] Warning: this script will remove all target containers, images, and dangling volumes. Continue? (y/n) " answer
   case $answer in
     y )   

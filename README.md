@@ -20,7 +20,7 @@ License: MIT
 
 * `git_bootstrap` - bootstrap a new git repository with .gitignore and README files
 * `sh_bootstrap` - bootstrap a new bash script with a formatted header, add execute permissions, launch in text editor
-* `headerize` - add formatted headers to a script of a variety of interpreters and environments...super flexible tool!! 
+* `headerize` - add formatted headers to a script of a variety of interpreters and environments
 * `docker_clean` - stop all running processes for given Docker images; remove them, purge all resulting dangling images and volumes
 
 ##### <a name="hooks"></a> Git Hooks
@@ -35,6 +35,7 @@ License: MIT
 
 * `flush_iptables` - flush all firewall rules, tables, chains, and mangles
 * `enable_port_fwd` - enables port forwarding
+* `edit_hosts` - Add or remove a line to/from /etc/hosts by IP & hostname (run as root)
 
 ##### <a name="util"></a> Utility Scripts
 
@@ -49,8 +50,6 @@ License: MIT
 **Download:** `curl -O https://raw.githubusercontent.com/MatthewZito/sh/master/scripts/<script_name.sh>`
 
 ##### no-env | Keep .env files out of your git history
-Committing `.env` files is an often devastating albeit easy mistake to make. Use this script to prevent nasty bots or Google Dork script kiddies from snagging API keys (or worse!) from your public repositories.
-
 This package includes a pre-commit hook and an installer script. Once installed, the hook executes *before* you make a git commit; it parses the staging area for any `.env` files. If a `.env` file is found, the commit will be aborted and you'll be notified. 
 
 At this point, you may want to include the `.env` file(s) in your `.gitignore`. If you wish to commit the file(s) anyway, you can bypass the hook with `git commit --no-verify` *or* you can set the option `git config hooks.allowenv true` - the script will then ignore `.env` files until set to `false`.
