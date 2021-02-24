@@ -22,6 +22,7 @@ License: MIT
 * `sh_bootstrap` - bootstrap a new bash script with a formatted header, add execute permissions, launch in text editor
 * `headerize` - add formatted headers to a script of a variety of interpreters and environments
 * `docker_clean` - stop all running processes for given Docker images; remove them, purge all resulting dangling images and volumes
+* `mkalias` - create permanent aliases; adds a *.mkalias.conf* file to user's home dir and sources it in user's bash runtime config. all aliases are stored in *.mkalias.conf*
 
 ##### <a name="hooks"></a> Git Hooks
 
