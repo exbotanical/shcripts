@@ -149,8 +149,8 @@ get_filename() {
 chk_pwd() {
   local target_dir=$1
 
-  if [[ $(pwd) != $1 ]]; then
-    panic $E_XCD "Unable to 'cd' into $1"
+  if [[ $(pwd) != $target_dir ]]; then
+    panic $E_XCD "Unable to 'cd' into $target_dir"
   fi
 }
 
