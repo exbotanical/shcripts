@@ -41,6 +41,7 @@ License: MIT
 ##### <a name="util"></a> Utility Scripts
 
 * `intconv` - convert a binary or hexadecimal value to decimal
+* `fp` - functional programming utils for bash
 
 ##### <a name="misc"></a> Miscellaneous
 
