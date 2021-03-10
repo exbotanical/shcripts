@@ -42,6 +42,7 @@ License: MIT
 
 * `intconv` - convert a binary or hexadecimal value to decimal
 * `fp` - functional programming utils for bash
+* `kill_port` - kill the process listening on a given port (win compatible)
 
 ##### <a name="misc"></a> Miscellaneous
 
