@@ -1,10 +1,10 @@
 #!/bin/bash     
-#title          :flush_iptables.sh
+#title          :flush_iptables.bash
 #desc           :flushes firewall rules
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0  
-#usage          :bash ./flush_iptables.sh
+#usage          :bash ./flush_iptables.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 

@@ -1,10 +1,10 @@
 #!/bin/bash     
-#title          :intconv.sh
+#title          :intconv.bash
 #desc           :conv hex, binary to decimal
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0  
-#usage          :bash ./intconv.sh
+#usage          :bash ./intconv.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 

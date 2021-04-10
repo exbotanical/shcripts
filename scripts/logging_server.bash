@@ -1,10 +1,10 @@
 #!/bin/bash     
-#title          :logging_server.sh
+#title          :logging_server.bash
 #desc           :a logging server
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0
-#usage          :bash ./logging_server.sh
+#usage          :bash ./logging_server.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 touch log.txt

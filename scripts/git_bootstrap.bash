@@ -1,10 +1,10 @@
 #!/bin/bash     
-#title          :git_bootstrap.sh
+#title          :git_bootstrap.bash
 #desc           :bootstrap a new git repository
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0  
-#usage          :bash ./git_bootstrap.sh
+#usage          :bash ./git_bootstrap.bash
 #environment    :bash 5.0.17
 #===============================================================================
 

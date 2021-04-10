@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-#filename       :sh_bootstrap.sh
+#filename       :bash_bootstrap.bash
 #desc           :bootstrap a new bash script
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0
-#usage          :./sh_bootstrap.sh
+#usage          :./bash_bootstrap.bash
 #environment    :bash 5.0.17
 #===============================================================================
 
@@ -96,7 +96,7 @@ normalize () {
   # strconv lower
   filename=${filename,,}
   # add ext if not extant
-  echo ${filename%.sh}.sh
+  echo ${filename%.bash}.bash
 }
 
 write_header () {

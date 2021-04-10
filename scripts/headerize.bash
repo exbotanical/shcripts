@@ -1,10 +1,10 @@
 #!/bin/bash     
-#title          :headerize.sh
+#title          :headerize.bash
 #desc           :add headers to a script
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0  
-#usage          :bash ./headerize.sh
+#usage          :bash ./headerize.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 

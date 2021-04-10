@@ -1,10 +1,10 @@
 #!/bin/bash     
-#title          :print_log_events.sh
+#title          :print_log_events.bash
 #desc           :print all current user log events
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
 #version        :1.0.0  
-#usage          :bash ./print_log_events.sh
+#usage          :bash ./print_log_events.bash
 #environment    :bash 5.0.17
 #===============================================================================
 LOG_DIR="/var/log"

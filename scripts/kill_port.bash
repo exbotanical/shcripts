@@ -4,7 +4,7 @@
 #author         :Matthew Zito (goldmund)
 #created        :02/2021
 #version        :1.0.0  
-#usage          :bash ./kill_port.sh
+#usage          :bash ./kill_port.bash
 #environment    :bash 5.0.17
 #===============================================================================
 IFS=$'\n'
@@ -31,11 +31,7 @@ main() {
     exit 0
   fi
 
-  kill $pid 2>/dev/null &&
-  echo "[+] Process terminated" || {
-    echo "[*] Process is a winport; executing taskkill..."
-    eval "taskkill //PID $pid //F" 
-  }
+  kill $pid 2>/dev/null && echo "[+] Process terminated"
   
   exit
 }

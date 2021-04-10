@@ -4,7 +4,7 @@
 #author         :Matthew Zito (goldmund)
 #created        :02/2021
 #version        :1.0.0  
-#usage          :bash ./edit_hosts.sh
+#usage          :bash ./edit_hosts.bash
 #environment    :bash 5.0.17
 #===============================================================================
 IFS=$'\n'

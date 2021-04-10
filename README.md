@@ -19,7 +19,7 @@ License: MIT
 ##### <a name="prod"></a> Productivity
 
 * `git_bootstrap` - bootstrap a new git repository with .gitignore and README files
-* `sh_bootstrap` - bootstrap a new bash script with a formatted header, add execute permissions, launch in text editor
+* `bash_bootstrap` - bootstrap a new bash script with a formatted header, add execute permissions, launch in text editor
 * `headerize` - add formatted headers to a script of a variety of interpreters and environments
 * `docker_clean` - stop all running processes for given Docker images; remove them, purge all resulting dangling images and volumes
 * `mkalias` - create permanent aliases; adds a *.mkalias.conf* file to user's home dir and sources it in user's bash runtime config. all aliases are stored in *.mkalias.conf*
@@ -50,7 +50,7 @@ License: MIT
 
 ### <a name="use"></a> Installation & Usage
 
-**Download:** `curl -O https://raw.githubusercontent.com/MatthewZito/sh/master/scripts/<script_name.sh>`
+**Download:** `curl -O https://raw.githubusercontent.com/MatthewZito/sh/master/scripts/<script_name.bash>`
 
 ##### no-env | Keep .env files out of your git history
 This package includes a pre-commit hook and an installer script. Once installed, the hook executes *before* you make a git commit; it parses the staging area for any `.env` files. If a `.env` file is found, the commit will be aborted and you'll be notified. 
@@ -59,8 +59,8 @@ At this point, you may want to include the `.env` file(s) in your `.gitignore`. 
 
 **Instructions:**
 1. Download the hook & installer to your repository root:
-`curl -O "https://raw.githubusercontent.com/MatthewZito/sh/master/hooks/no-env/{no-env.sh,installer.sh}"`
+`curl -O "https://raw.githubusercontent.com/MatthewZito/sh/master/hooks/no-env/{no-env.sh,installer}"`
 2. Add execute permissions to the installer:
-`chmod u+rx installer.sh`
+`chmod u+rx installer`
 3. Execute the installer:
-`./installer.sh`
+`./installer`
