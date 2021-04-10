@@ -55,9 +55,9 @@ add_alias() {
 
 setup() {
   cd $HOME 2>/dev/null || panic $E_XCD "Unable to change directories"
-    
+
   chk_pwd $HOME
-  
+
   get_bashrc
   create_conf
   write_conf
@@ -131,7 +131,7 @@ usage() {
 SYNOPSIS
   Add a permanent alias
 
-USAGE 
+USAGE
   $0 \$1
 
 EXAMPLE

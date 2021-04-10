@@ -1,9 +1,9 @@
-#!/bin/bash     
+#!/bin/bash
 #title          :docker_clean
 #desc           :purge all dangling docker artifacts
 #author         :Matthew Zito (goldmund)
 #created        :01/2021
-#version        :1.0.0  
+#version        :1.0.0
 #usage          :bash ./docker_clean.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
@@ -54,7 +54,7 @@ purge_images() {
 init() {
   read -p "[*] Warning: this script will remove all target containers, images, and dangling volumes. Continue? (y/n) " answer
   case $answer in
-    y )   
+    y )
       stop_daemon_proc
       purge_images
       prune_docker_imgs

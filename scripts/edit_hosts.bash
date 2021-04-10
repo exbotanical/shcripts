@@ -1,9 +1,9 @@
-#!/bin/bash     
+#!/bin/bash
 #title          :edit_hosts
 #desc           :add, remove /etc/hosts entries by IP and hostname
 #author         :Matthew Zito (goldmund)
 #created        :02/2021
-#version        :1.0.0  
+#version        :1.0.0
 #usage          :bash ./edit_hosts.bash
 #environment    :bash 5.0.17
 #===============================================================================
@@ -37,15 +37,15 @@ usage() {
   cat <<EOF
 Add or remove a given line from /etc/hosts. Must be run as root.
 
-Usage: 
+Usage:
   $0 \$1 \$2 ?\$3
-Options: 
+Options:
   add (\$1) Add an entry, \$2, for IP addr ( \$3 OR $DEFAULT_IP)
   rm (\$1 Remove an entry, \$2, for IP addr ( \$3 OR $DEFAULT_IP)
 
-Examples: 
-  $0 add local-dev.site 127.0.0.1 
-  $0 rm local-dev.site 127.0.0.1 
+Examples:
+  $0 add local-dev.site 127.0.0.1
+  $0 rm local-dev.site 127.0.0.1
 
 EOF
   exit 1

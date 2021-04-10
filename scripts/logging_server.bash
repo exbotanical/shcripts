@@ -1,4 +1,4 @@
-#!/bin/bash     
+#!/bin/bash
 #title          :logging_server.bash
 #desc           :a logging server
 #author         :Matthew Zito (goldmund)
@@ -13,8 +13,8 @@ while true; do
     nc -l 5000 > >(
         while read -r rq; do
             printf '%s' "$(echo $rq | tr '\r\n' ' ' | tr -d '-')" >> log.txt
-            q=$(echo $rq | tr -d '\r\n')           
-        
+            q=$(echo $rq | tr -d '\r\n')
+
             if echo "$q" | grep -qE '^GET /'; then
 
                 echo "Request: GET"
@@ -28,4 +28,3 @@ while true; do
     echo "" >> log.txt
     )
 done
-

@@ -9,7 +9,7 @@ for_each() {
   local fn=$1
 
   shift
-  
+
   local -a arr=($@)
 
   for item in "${arr[@]}"; do
@@ -22,9 +22,9 @@ map() {
   local -a res=()
 
   local fn=$1
- 
+
   shift
-  
+
   local -a arr=($@)
 
   for (( i=0; i < ${#arr[@]}; i++ )); do
@@ -41,7 +41,7 @@ filter() {
   local fn="$1"
 
   shift
-  
+
   local -a arr=($@)
 
   for (( i=0; i < ${#arr[@]}; i++ )); do
@@ -65,7 +65,7 @@ map_stream () {
 filter_stream() {
   local fn=$1
   local arg
- 
+
   while read -r arg; do
     $fn $arg && echo $arg
   done

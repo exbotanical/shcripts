@@ -1,9 +1,9 @@
-#!/bin/bash     
+#!/bin/bash
 #title          :enable_port_fwd.bash
 #desc           :enables port forwarding
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0  
+#version        :1.0.0
 #usage          :bash ./enable_port_fwd.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================

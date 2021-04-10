@@ -53,7 +53,7 @@ License: MIT
 **Download:** `curl -O https://raw.githubusercontent.com/MatthewZito/sh/master/scripts/<script_name.bash>`
 
 ##### no-env | Keep .env files out of your git history
-This package includes a pre-commit hook and an installer script. Once installed, the hook executes *before* you make a git commit; it parses the staging area for any `.env` files. If a `.env` file is found, the commit will be aborted and you'll be notified. 
+This package includes a pre-commit hook and an installer script. Once installed, the hook executes *before* you make a git commit; it parses the staging area for any `.env` files. If a `.env` file is found, the commit will be aborted and you'll be notified.
 
 At this point, you may want to include the `.env` file(s) in your `.gitignore`. If you wish to commit the file(s) anyway, you can bypass the hook with `git commit --no-verify` *or* you can set the option `git config hooks.allowenv true` - the script will then ignore `.env` files until set to `false`.
 

@@ -1,9 +1,9 @@
-#!/bin/bash     
+#!/bin/bash
 #title          :git_bootstrap.bash
 #desc           :bootstrap a new git repository
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0  
+#version        :1.0.0
 #usage          :bash ./git_bootstrap.bash
 #environment    :bash 5.0.17
 #===============================================================================
@@ -59,7 +59,7 @@ dir_name=`basename $(pwd)`
 
 get_repo_name $dir_name
 create_readme $repo_name
-create_gitignore 
+create_gitignore
 init_git $repo_name
 
 echo "[+] Done"

@@ -1,9 +1,9 @@
-#!/bin/bash     
+#!/bin/bash
 #title          :flush_iptables.bash
 #desc           :flushes firewall rules
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0  
+#version        :1.0.0
 #usage          :bash ./flush_iptables.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
@@ -18,7 +18,7 @@ function flush_em {
     # Purge firewalls / chains rules
     iptables -F
     # Purge chains
-    iptables -X 
+    iptables -X
     # Counters
     iptables -Z
     # Flush nat, mangle
@@ -39,16 +39,16 @@ function init {
             flush_em
             echo "[+] Flush completed."
             ;;
-        n ) 
+        n )
             exit 0
             ;;
-        * ) 
+        * )
             init
             ;;
     esac
 }
 
-[[ $EUID -ne 0 ]] && { 
+[[ $EUID -ne 0 ]] && {
     echo "[-] This script should be run as root."; exit 1; }
 
 init

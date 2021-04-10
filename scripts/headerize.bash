@@ -1,9 +1,9 @@
-#!/bin/bash     
+#!/bin/bash
 #title          :headerize.bash
 #desc           :add headers to a script
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0  
+#version        :1.0.0
 #usage          :bash ./headerize.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
@@ -26,8 +26,8 @@ function get_script_name {
     if [ ! -e "$title" ]; then
         read -p "[*] ${title} does not exist. Create it? (y/n) :" answer
 
-        case $answer in 
-            y ) 
+        case $answer in
+            y )
                 touch $title
                 echo "[+] Created $title"
                 ;;
@@ -121,7 +121,7 @@ headerpfx=(
 headerval=(
 ":${env} ${env_version}"
 ":./$title"
-":$version" 
+":$version"
 ":$now"
 ":$author"
 ":$desc"

@@ -3,7 +3,7 @@
 #desc           :kill process running on given port
 #author         :Matthew Zito (goldmund)
 #created        :02/2021
-#version        :1.0.0  
+#version        :1.0.0
 #usage          :bash ./kill_port.bash
 #environment    :bash 5.0.17
 #===============================================================================
@@ -32,7 +32,7 @@ main() {
   fi
 
   kill $pid 2>/dev/null && echo "[+] Process terminated"
-  
+
   exit
 }
 
