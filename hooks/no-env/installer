@@ -10,23 +10,23 @@
 
 # preliminary checks
 [[ ! -e .git ]] && { 
-    echo "[-] Please run this script in the same root as your .git directory"; 
-    exit 1;
+  echo "[-] Please run this script in the same root as your .git directory"; 
+  exit 1;
 }
 
 [[ ! -e .git/hooks/ ]] && {
-    echo "[-] Git hooks directory not found"; 
-    exit 1;
+  echo "[-] Git hooks directory not found"; 
+  exit 1;
 }
 
 [[ ! -f no-env.sh ]] && {
-    echo "[-] The no-env git hook was not found.";
-    exit 1;
+  echo "[-] The no-env git hook was not found.";
+  exit 1;
 }
 
 [[ -e .git/hooks/pre-commit ]] && {
-    echo "[-] A precommit hook already exists in this repository. Disable it to run this installer.";
-    exit 1;
+  echo "[-] A precommit hook already exists in this repository. Disable it to run this installer.";
+  exit 1;
 }
 
 # install as pre-commit hook

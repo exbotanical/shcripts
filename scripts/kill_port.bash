@@ -12,12 +12,12 @@ IFS=$'\n'
 E_ARGS=88
 E_BADARG=89
 
-get_pid() {
+get_pid () {
   local target_port=$1
   echo $(lsof -n -i :$target_port 2>/dev/null | grep LISTEN | awk '{ print $2 }')
 }
 
-main() {
+main () {
   local port=$1
 
   if [[ ${#port} -lt 4 || ${#port} -gt 5 ]]; then
@@ -37,11 +37,11 @@ main() {
 }
 
 # util
-current_time() {
+current_time () {
   echo $(date +'%Y-%m-%dT%H:%M:%S%z')
 }
 
-panic() {
+panic () {
   local exit_status=$1
 
   shift # pop exit status; we don't want to print it

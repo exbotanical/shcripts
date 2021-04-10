@@ -20,11 +20,11 @@ DEFAULT_IP="127.0.0.1"
 IP=${3:-$DEFAULT_IP}
 
 # utils
-current_time() {
+current_time () {
   echo $(date +'%Y-%m-%dT%H:%M:%S%z')
 }
 
-panic() {
+panic () {
   local exit_status=$1
 
   shift # pop exit status; we don't want to print it
@@ -33,7 +33,7 @@ panic() {
   exit $exit_status
 }
 
-usage() {
+usage () {
   cat <<EOF
 Add or remove a given line from /etc/hosts. Must be run as root.
 

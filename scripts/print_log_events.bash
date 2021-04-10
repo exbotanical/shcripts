@@ -7,9 +7,6 @@
 #usage          :bash ./print_log_events.bash
 #environment    :bash 5.0.17
 #===============================================================================
-LOG_DIR="/var/log"
-MAX=100
-Locale="$(basename "$0")"
 
 usage () {
   cat <<EOF
@@ -64,5 +61,9 @@ main () {
     usage
   fi
 }
+
+LOG_DIR="/var/log"
+MAX=100
+Locale="$(basename "$0")"
 
 main $*

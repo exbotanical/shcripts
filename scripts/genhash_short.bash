@@ -12,11 +12,11 @@ Nl=$'\n'
 IFS=$Nl
 
 main () {
-  local max_chars_calc=$(($Max_out_chars - 1)) uniq_key calc res out
+  local max_chars_calc=$(($MAX_CHARS_OUT - 1)) uniq_key calc res out
 
   uniq_key=$(get_uniq_key)
-  while (( ${#uniq_key} > Max_chars | ${#uniq_key} == 0 )); do
-    echo "[-] The uniq_key must be between 1 and $Max_chars characters"
+  while (( ${#uniq_key} > MAX_CHARS | ${#uniq_key} == 0 )); do
+    echo "[-] The uniq_key must be between 1 and $MAX_CHARS characters"
     uniq_key=$(get_uniq_key)
   done
 
@@ -40,8 +40,8 @@ get_uniq_key () {
   echo $uniq_key
 }
 
-Max_chars=9
-Max_out_chars=20
+MAX_CHARS=9
+MAX_CHARS_OUT=20
 
 return 2>/dev/null
 

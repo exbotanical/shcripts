@@ -8,18 +8,15 @@
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 
-main() {
-  [[ $EUID -ne 0 ]] && {
-  echo "[-] This script should be run as root."; exit 1; }
-
-  init
-}
-
-init() {
+main () {
   read -p "[*] Warning: this script will modify your IP Tables configurations. Continue? (y/n) " answer
   case $answer in
     y )
-      [[ ! -x $TABLES_F ]] && { echo "[-] \"${TABLES_F}\" not found."; exit 1; }
+      if [[ ! -x $TABLES_F ]]; then
+        echo "[-] \"${TABLES_F}\" not found.";
+        exit $E_FILENOTFOUND;
+      fi
+
       echo "[+] Updating rules..."
       echo 1 > /proc/sys/net/ipv4/ip_forward
       # clear rules that potentially interfere with port forwarding
@@ -34,11 +31,36 @@ init() {
       exit 0
       ;;
     * )
-      init
+      main
       ;;
   esac
 }
 
+##############################
+###        Constants       ###
+##############################
+
+# exit codes
+ROOT_UID=0
+E_NOTROOT=87
+E_FILENOTFOUND=2
+
+# vars
 TABLES_F="/sbin/iptables"
+
+##############################
+###      *Begin Exec*      ###
+##############################
+
+# stop here if being sourced
+return 2>/dev/null
+
+# stop on errors
+set -o errexit
+
+if [[ $EUID -ne $ROOT_UID ]]; then
+  echo "[-] This script should be run as root.";
+  exit $E_NOTROOT;
+fi
 
 main

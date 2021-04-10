@@ -12,7 +12,7 @@ TARGET_IMAGES=(
 # target image names here
 )
 
-prune_docker_imgs() {
+prune_docker_imgs () {
   echo -e '[*] Checking for dangling images...\n'
 
   if [[ $(echo $(docker images -f dangling=true -q) | wc -m) -gt 1 ]]; then
@@ -23,7 +23,7 @@ prune_docker_imgs() {
   fi
 }
 
-prune_docker_vols() {
+prune_docker_vols () {
   echo -e '[*] Checking for dangling volumes...\n'
 
   if [[ $(echo $(docker volume ls) | wc -m) -gt 19 ]]; then
@@ -34,7 +34,7 @@ prune_docker_vols() {
   fi
 }
 
-stop_daemon_proc() {
+stop_daemon_proc () {
   echo -e '[*] Checking for active daemon processes...\n'
 
   [[ $(echo $(docker ps -aq) | wc -m) -gt 1 ]] && {
@@ -44,14 +44,19 @@ stop_daemon_proc() {
   echo -e '[*] No active daemon processes; skipping...\n'
 }
 
-purge_images() {
+purge_images () {
   for ((i=0; i < ${#TARGET_IMAGES[@]}; i++)); do
     echo -e "[*] Purging all ${TARGET_IMAGES[i]} images...\n"
     docker images | grep ${TARGET_IMAGES[i]} | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi ${TARGET_IMAGES[i]}:{}
   done;
 }
 
-init() {
+main () {
+  if [[ ${#TARGET_IMAGES} -eq 0 ]]; then
+    echo "[-] You must set the target images prior to executing this script"
+    exit $E_ARGS
+  fi
+
   read -p "[*] Warning: this script will remove all target containers, images, and dangling volumes. Continue? (y/n) " answer
   case $answer in
     y )
@@ -59,16 +64,27 @@ init() {
       purge_images
       prune_docker_imgs
       prune_docker_vols
+      echo "[+] Purge completed"
       ;;
     n )
       exit 0
       ;;
     * )
-      init
+      main
       ;;
     esac
 }
 
-init
-echo "[+] Purge completed"
+E_ARGS=88
 
+##############################
+###      *Begin Exec*      ###
+##############################
+
+# stop here if being sourced
+return 2>/dev/null
+
+# stop on errors
+set -o errexit
+
+main

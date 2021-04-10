@@ -1,5 +1,5 @@
 #!/bin/bash
-#title          :git_bootstrap.bash
+#title          :git_bootstrap
 #desc           :bootstrap a new git repository
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
@@ -8,58 +8,76 @@
 #environment    :bash 5.0.17
 #===============================================================================
 
-function get_repo_name {
-    # this is the name that will be used on GH, or elsewhere
-    read -p "[+] Use '$1' as public-facing repo name? (y/n) " answer
+# FIXME
+# TODO rewrite this
+Nl=$'\n'
+IFS=$Nl
 
-    case $answer in
-        y )
-            repo_name=$1
-            ;;
-        n )
-            read -p "[+] Enter your new repository name: " repo_name
-            # default back to curr if invalid opt given
-            if [ "$repo_name" = "" ]; then
-                repo_name=$1
-            fi
-            ;;
-        *)
-            get_repo_name
-            ;;
-    esac
+get_repo_name () {
+  local repo_dir=$1
+  # this is the name that will be used on GH, or elsewhere
+  read -p "[+] Use '$repo_dir' as public-facing repo name? (y/n) " answer
+
+  case $answer in
+    y )
+      repo_name=$repo_dir
+      ;;
+    n )
+      read -p "[+] Enter your new repository name: " repo_name
+      # default back to curr if invalid opt given
+      if [ "$repo_name" = "" ]; then
+          repo_name=$repo_dir
+      fi
+      ;;
+    *)
+      get_repo_name
+      ;;
+  esac
 }
 
-function create_readme {
-    echo "[+] Creating README..."
-    touch README.md
-    echo "# $1" > README.md
+create_readme () {
+  echo "[+] Creating README at $Readme_f..."
+  touch $Readme_f
+  echo "# $1" > $Readme_f
 }
 
-function init_git {
-    echo "[+] Initializing a new Git repository in $1..."
-    git init
+init_git () {
+  local repo_name=$1
+  echo "[+] Initializing a new Git repository in $repo_name..."
+  git init
 }
 
-function create_gitignore {
+create_gitignore () {
+  echo "[+] Creating $Git_ignore_f..."
+  touch $Git_ignore_f
 
-    echo "[+] Creating .gitignore..."
-    touch .gitignore
-
-    while true; do
-        read -p "[+] Enter file name to add to .gitignore (or 'q' to quit): " filename
-        if [ $filename = "q" ]; then
-            break
-        else
-            echo $filename >> .gitignore
-        fi
-    done
+  while true; do
+    read -p "[+] Enter file name to add to $Git_ignore_f (or 'q' to quit): " filename
+    if [ $filename = "q" ]; then
+      break
+    else
+      echo $filename >> $Git_ignore_f
+    fi
+  done
 }
 
-dir_name=`basename $(pwd)`
+main () {
+  local dir_name=`basename $(pwd)`
 
-get_repo_name $dir_name
-create_readme $repo_name
-create_gitignore
-init_git $repo_name
+  get_repo_name $dir_name
+  create_readme $repo_name
+  create_gitignore
+  init_git $repo_name
 
-echo "[+] Done"
+  echo "[+] Done"
+}
+
+Git_ignore_f='.gitignore'
+Readme_f='README.md'
+
+# stop here if being sourced
+return 2>/dev/null
+
+# stop on errors and unset variable refs
+set -o errexit
+set -o nounset

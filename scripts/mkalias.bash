@@ -41,7 +41,7 @@ main () {
 ###      Program Fns       ###
 ##############################
 
-add_alias() {
+add_alias () {
   local alias_body=$1
 
   echo "alias $alias_body" >> "$HOME/$CONF_FILE"
@@ -53,7 +53,7 @@ add_alias() {
 ###        Setup Fns       ###
 ##############################
 
-setup() {
+setup () {
   cd $HOME 2>/dev/null || panic $E_XCD "Unable to change directories"
 
   chk_pwd $HOME
@@ -64,7 +64,7 @@ setup() {
   add_srcline
 }
 
-create_conf() {
+create_conf () {
   touch $CONF_FILE 2>/dev/null || panic $E_CANTCREATE "Unable to create config file"
 }
 
@@ -160,7 +160,7 @@ success() {
   echo -e "[+] $msg\n"
 }
 
-panic() {
+panic () {
   local exit_status=$1
 
   shift # pop exit status; we don't want to print it
@@ -169,7 +169,7 @@ panic() {
   exit $exit_status
 }
 
-current_time() {
+current_time () {
   echo $(date +'%Y-%m-%dT%H:%M:%S%z')
 }
 

@@ -5,7 +5,7 @@ IFS=$'\n'
 
 # not really fp, but including it anyway - get over it
 # for_each forea_fn ${arr[*]}
-for_each() {
+for_each () {
   local fn=$1
 
   shift
@@ -18,7 +18,7 @@ for_each() {
 }
 
 # map map_fn ${arr[*]}
-map() {
+map () {
   local -a res=()
 
   local fn=$1
@@ -35,7 +35,7 @@ map() {
 }
 
 # filter filter_fn ${arr[*]}
-filter() {
+filter () {
   local -a res=()
 
   local fn="$1"
@@ -62,7 +62,7 @@ map_stream () {
 }
 
 # echo $(echo "${arr[*]}" | filter_stream filter_fn)
-filter_stream() {
+filter_stream () {
   local fn=$1
   local arg
 
