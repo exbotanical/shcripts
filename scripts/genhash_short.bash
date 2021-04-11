@@ -1,9 +1,8 @@
 #!/bin/bash
-#title          :genhash_short.bash
 #desc           :Generate short hash given key
 #author         :Matthew Zito (goldmund)
 #created        :01/2021
-#version        :1.0.0
+#version        :1.0.1
 #usage          :bash ./genhash_short.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================

@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-#title          :kill_port
 #desc           :kill process running on given port
 #author         :Matthew Zito (goldmund)
 #created        :02/2021
-#version        :1.0.0
+#version        :2.0.1
 #usage          :bash ./kill_port.bash
 #environment    :bash 5.0.17
 #===============================================================================

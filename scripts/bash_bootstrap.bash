@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-#filename       :bash_bootstrap.bash
 #desc           :bootstrap a new bash script
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0
+#version        :1.0.2
 #usage          :./bash_bootstrap.bash
 #environment    :bash 5.0.17
 #===============================================================================
@@ -35,7 +34,7 @@ main () {
     $(get_environment)
   )
 
-  write_header $filename $description ${rest[*]}
+  write_header $description ${rest[*]}
   # render file exec
   chmod +x $filename
   edit_file $filename
@@ -100,11 +99,10 @@ normalize () {
 }
 
 write_header () {
-  local filename=$1 desc=$2 author=$3 created=$4 version=$5 usage=$6 environment=$7
+  local desc=$1 author=$2 created=$3 version=$4 usage=$5 environment=$6
 
   cat >$filename <<END
 #!/usr/bin/env bash
-#filename       :$filename
 #desc           :$desc
 #author         :$author
 #created        :$created

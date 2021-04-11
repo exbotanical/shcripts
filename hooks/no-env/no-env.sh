@@ -1,10 +1,9 @@
 #!/bin/bash
-#title          :no-env
 #desc           :prevent .env files from being committed
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0
-#usage          :see installer
+#version        :1.0.1
+#usage          :bash ./installer
 #environment    :bash 5.0.17(1)-release
 #===============================================================================
 

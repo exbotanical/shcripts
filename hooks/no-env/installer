@@ -1,5 +1,4 @@
 #!/bin/bash     
-#title          :no-env pre-commit hook installer
 #desc           :install no-env pre-commit hook
 #author         :Matthew Zito (goldmund)
 #created        :11/2020

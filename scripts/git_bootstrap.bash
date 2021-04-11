@@ -1,5 +1,4 @@
 #!/bin/bash
-#title          :git_bootstrap
 #desc           :bootstrap a new git repository
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
@@ -8,37 +7,21 @@
 #environment    :bash 5.0.17
 #===============================================================================
 
-# FIXME
-# TODO rewrite this
 Nl=$'\n'
 IFS=$Nl
 
-get_repo_name () {
-  local repo_dir=$1
-  # this is the name that will be used on GH, or elsewhere
-  read -p "[+] Use '$repo_dir' as public-facing repo name? (y/n) " answer
-
+continue? () {
+  local repo_name=$1
+  read -p "[!] Are you sure you want to initialize $repo_name as a git repository? (y/n)" answer
   case $answer in
-    y )
-      repo_name=$repo_dir
-      ;;
-    n )
-      read -p "[+] Enter your new repository name: " repo_name
-      # default back to curr if invalid opt given
-      if [ "$repo_name" = "" ]; then
-          repo_name=$repo_dir
-      fi
-      ;;
-    *)
-      get_repo_name
-      ;;
+  y );;
+  n)
+    exit 0
+    ;;
+  *)
+    continue?
+    ;;
   esac
-}
-
-create_readme () {
-  echo "[+] Creating README at $Readme_f..."
-  touch $Readme_f
-  echo "# $1" > $Readme_f
 }
 
 init_git () {
@@ -47,13 +30,21 @@ init_git () {
   git init
 }
 
+create_readme () {
+  local repo_name=$1
+  echo "[+] Creating README at $Readme_f..."
+  touch $Readme_f
+  echo "# $repo_name" > $Readme_f
+}
+
+
 create_gitignore () {
   echo "[+] Creating $Git_ignore_f..."
   touch $Git_ignore_f
 
   while true; do
-    read -p "[+] Enter file name to add to $Git_ignore_f (or 'q' to quit): " filename
-    if [ $filename = "q" ]; then
+    read -p "[+] Enter file name to add to $Git_ignore_f (or 'x' to continue): " filename
+    if [[ $filename == "x" ]]; then
       break
     else
       echo $filename >> $Git_ignore_f
@@ -64,10 +55,11 @@ create_gitignore () {
 main () {
   local dir_name=`basename $(pwd)`
 
-  get_repo_name $dir_name
-  create_readme $repo_name
+  continue? $dir_name
+
+  init_git $dir_name
   create_gitignore
-  init_git $repo_name
+  create_readme $dir_name
 
   echo "[+] Done"
 }
@@ -81,3 +73,7 @@ return 2>/dev/null
 # stop on errors and unset variable refs
 set -o errexit
 set -o nounset
+# no globbing - we don't need it here
+set -o noglob
+
+main

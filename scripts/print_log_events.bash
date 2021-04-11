@@ -1,9 +1,8 @@
 #!/bin/bash
-#title          :print_log_events.bash
 #desc           :print all current user log events
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0
+#version        :2.0.1
 #usage          :bash ./print_log_events.bash
 #environment    :bash 5.0.17
 #===============================================================================

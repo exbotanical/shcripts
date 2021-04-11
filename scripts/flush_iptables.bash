@@ -1,5 +1,4 @@
 #!/bin/bash
-#title          :flush_iptables.bash
 #desc           :flushes firewall rules
 #author         :Matthew Zito (goldmund)
 #created        :11/2020

@@ -1,9 +1,8 @@
 #!/bin/bash
-#title          :docker_clean
 #desc           :purge all dangling docker artifacts
 #author         :Matthew Zito (goldmund)
 #created        :01/2021
-#version        :1.0.0
+#version        :1.0.1
 #usage          :bash ./docker_clean.bash
 #environment    :bash 5.0.17(1)-release
 #===============================================================================

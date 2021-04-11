@@ -1,9 +1,8 @@
 #!/bin/bash
-#title          :edit_hosts
 #desc           :add, remove /etc/hosts entries by IP and hostname
 #author         :Matthew Zito (goldmund)
 #created        :02/2021
-#version        :1.0.0
+#version        :1.0.1
 #usage          :bash ./edit_hosts.bash
 #environment    :bash 5.0.17
 #===============================================================================

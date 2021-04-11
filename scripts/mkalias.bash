@@ -1,9 +1,8 @@
 #!/bin/bash
-#filename       :mkalias.bash
 #desc           :Add permanent aliases
 #author         :Matthew Zito (goldmund)
 #created        :2/2021
-#version        :1.0.0
+#version        :1.0.1
 #usage          :./mkalias.bash
 #environment    :bash 5.0.17
 #===============================================================================

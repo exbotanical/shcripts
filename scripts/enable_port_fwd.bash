@@ -1,5 +1,4 @@
 #!/bin/bash
-#title          :enable_port_fwd.bash
 #desc           :enables port forwarding
 #author         :Matthew Zito (goldmund)
 #created        :11/2020

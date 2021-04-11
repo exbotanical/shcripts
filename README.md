@@ -1,17 +1,19 @@
-## A collection of bash scripts
+# Bash Utils
+
 ```
 Author: Matthew T Zito (goldmund)
 License: MIT
 ```
 
-## Contents
+## Table of Contents
+
 - [Inventory](#enum)
-    - [Productivity](#prod)
-    - [Git Hooks](#hooks)
-    - [Logging](#log)
-    - [Configuration](#conf)
-    - [Utility](#util)
-    - [Misc](#misc)
+  - [Productivity](#prod)
+  - [Git Hooks](#hooks)
+  - [Logging](#log)
+  - [Configuration](#conf)
+  - [Utility](#util)
+  - [Misc](#misc)
 - [Installation & Usage](#use)
 
 ### <a name="enum"></a> Inventory
@@ -20,7 +22,6 @@ License: MIT
 
 * `git_bootstrap` - bootstrap a new git repository with .gitignore and README files
 * `bash_bootstrap` - bootstrap a new bash script with a formatted header, add execute permissions, launch in text editor
-* `headerize` - add formatted headers to a script of a variety of interpreters and environments
 * `docker_clean` - stop all running processes for given Docker images; remove them, purge all resulting dangling images and volumes
 * `mkalias` - create permanent aliases; adds a *.mkalias.conf* file to user's home dir and sources it in user's bash runtime config. all aliases are stored in *.mkalias.conf*
 
@@ -42,11 +43,9 @@ License: MIT
 
 * `intconv` - convert a binary or hexadecimal value to decimal
 * `fp` - functional programming utils for bash
-* `kill_port` - kill the process listening on a given port (win compatible)
+* `kill_port` - kill the process listening on a given port
 
 ##### <a name="misc"></a> Miscellaneous
-
-* `logging_server` - listens for and logs HTTP requests
 
 ### <a name="use"></a> Installation & Usage
 
