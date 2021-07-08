@@ -13,7 +13,7 @@ E_BADARG=89
 
 get_pid () {
   local target_port=$1
-  echo $(lsof -n -i :$target_port 2>/dev/null | grep LISTEN | awk '{ print $2 }')
+  echo $(lsof -ni :$target_port 2>/dev/null | grep LISTEN | awk '{ print $2 }')
 }
 
 main () {
@@ -30,7 +30,7 @@ main () {
     exit 0
   fi
 
-  kill $pid 2>/dev/null && echo "[+] Process terminated"
+  kill -9 $pid 2>/dev/null && echo "[+] Process terminated"
 
   exit
 }
