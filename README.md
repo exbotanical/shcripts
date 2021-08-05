@@ -44,12 +44,13 @@ License: MIT
 * `intconv` - convert a binary or hexadecimal value to decimal
 * `fp` - functional programming utils for bash
 * `kill_port` - kill the process listening on a given port
+* `shutil` - ultimate utilities sourceable
 
 ##### <a name="misc"></a> Miscellaneous
 
 ### <a name="use"></a> Installation & Usage
 
-**Download:** `curl -O https://raw.githubusercontent.com/MatthewZito/sh/master/scripts/<script_name.bash>`
+**Download:** `curl -O https://raw.githubusercontent.com/MatthewZito/shcripts/master/scripts/<script_name.bash>`
 
 ##### no-env | Keep .env files out of your git history
 This package includes a pre-commit hook and an installer script. Once installed, the hook executes *before* you make a git commit; it parses the staging area for any `.env` files. If a `.env` file is found, the commit will be aborted and you'll be notified.
@@ -58,7 +59,7 @@ At this point, you may want to include the `.env` file(s) in your `.gitignore`. 
 
 **Instructions:**
 1. Download the hook & installer to your repository root:
-`curl -O "https://raw.githubusercontent.com/MatthewZito/sh/master/hooks/no-env/{no-env.sh,installer}"`
+`curl -O "https://raw.githubusercontent.com/MatthewZito/shcripts/master/hooks/no-env/{no-env.sh,installer}"`
 2. Add execute permissions to the installer:
 `chmod u+rx installer`
 3. Execute the installer:
